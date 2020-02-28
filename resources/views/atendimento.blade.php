@@ -81,7 +81,7 @@ $title = 'Intranet - Atendimento';
           <div class="icon">
             <i class="fas fa-plus"></i>
           </div>
-          <a href="#" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="atendimento/novo" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     

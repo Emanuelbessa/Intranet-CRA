@@ -10,4 +10,9 @@ class AtendimentoController extends Controller
     {
         return view('atendimento');
     }
+
+    public function atendimentoNovo()
+    {
+        return view('atendimentoNovo');
+    }
 }
