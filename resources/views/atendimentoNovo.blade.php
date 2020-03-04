@@ -1,4 +1,9 @@
+
 <!DOCTYPE html>
+@section('js')
+@parent
+
+@endsection
 <html>
     <?php
     $title = 'Intranet - Novo Atendimento';
@@ -59,11 +64,11 @@
                         <label>Marque se registrado ou não</label>
                         <div class="form-group">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="TipoRegistro">
+                            <input class="form-check-input" type="radio" name="TipoRegistro" id="registrado">
                             <label class="form-check-label">Registrado</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="TipoRegistro">
+                            <input class="form-check-input" type="radio" name="TipoRegistro" id="naoregistrado">
                             <label class="form-check-label">Não Registrado</label>
                           </div>
                         </div>
@@ -174,16 +179,36 @@
           <div class="card-body">
             <div class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox">
+                  <input class="form-check-input" type="checkbox" id="motivo1">
                   <label class="col-sm-2 form-check-label">Motivo1</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox">
+                  <input class="form-check-input" type="checkbox" id="motivo2">
                   <label class="col-sm-2 form-check-label">Motivo2</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox">
+                  <input class="form-check-input" type="checkbox" id="motivo3">
                   <label class="col-sm-2 form-check-label">Motivo3</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="motivo4">
+                  <label class="col-sm-2 form-check-label">Motivo4</label>
+                </div>
+                <div class="form-check" id="divmotivo2">
+                  <input class="form-check-input" type="checkbox" id="motivo5">
+                  <label class="col-sm-2 form-check-label">Motivo5</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="motivo6">
+                  <label class="col-sm-2 form-check-label">Motivo6</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="motivo7">
+                  <label class="col-sm-2 form-check-label">Motivo7</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="motivo8">
+                  <label class="col-sm-2 form-check-label">Motivo8</label>
                 </div>
               </div>
             <div class="form-group row">
@@ -244,6 +269,8 @@
           </div>
           <!-- /.card-footer -->
         </form>
+
+
       </div>
       <!-- /.card -->
     </section>
@@ -259,17 +286,13 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery -->
 <script src="{{ asset ('AdminLTE/plugins/jquery/jquery.min.js') }} "></script>
+<script type="text/javascript" src="{{ URL::asset('js/paginas/atendimento/atendimentoNovo.js') }}">  </script>
 <!-- Bootstrap -->
 <script src="{{ asset ('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE -->
 <script src="{{ asset ('AdminLTE/dist/js/adminlte.js') }}"></script>
 
-<!-- OPTIONAL SCRIPTS -->
-<script src="{{ asset ('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
-<script src="{{ asset ('AdminLTE/dist/js/demo.js') }}"></script>
-<script src="{{ asset ('AdminLTE/dist/js/pages/dashboard3.js') }}"></script>
 </body>
 </html>
