@@ -106,39 +106,30 @@ function EsconderParcial() {
         EsconderNaoRegistradoPJ();
     }
 }
-/*
-if( ){
-            esconder();
-        }
-*/
 
 $('input[type="radio"][name="TipoRegistro"]').click(function() {
     if ($("#registrado").is(":checked") && $("#PF").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < RegistradoPF.length; i++) {
             RegistradoPF[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 1;
     } else if ($("#naoregistrado").is(":checked") && $("#PF").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < NaoRegistradoPF.length; i++) {
             NaoRegistradoPF[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 2;
     } else if ($("#registrado").is(":checked") && $("#PJ").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < RegistradoPJ.length; i++) {
             RegistradoPJ[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 3;
     } else if ($("#naoregistrado").is(":checked") && $("#PJ").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < NaoRegistradoPJ.length; i++) {
             NaoRegistradoPJ[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 4;
     }
@@ -148,28 +139,24 @@ $('input[type="radio"][name="PFPJ"]').click(function() {
         EsconderParcial();
         for (i = 0; i < RegistradoPF.length; i++) {
             RegistradoPF[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 1;
     } else if ($("#naoregistrado").is(":checked") && $("#PF").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < NaoRegistradoPF.length; i++) {
             NaoRegistradoPF[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 2;
     } else if ($("#registrado").is(":checked") && $("#PJ").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < RegistradoPJ.length; i++) {
             RegistradoPJ[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 3;
     } else if ($("#naoregistrado").is(":checked") && $("#PJ").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < NaoRegistradoPJ.length; i++) {
             NaoRegistradoPJ[i].show();
-            //$("#motivo2").prop("checked", false);
         }
         aux = 4;
     }
