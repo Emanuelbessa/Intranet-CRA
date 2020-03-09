@@ -1,4 +1,3 @@
-var teste = $("input[type=radio][name=TipoRegistro]:checked").val();
 var TodosMotivos = [
     $("#motivo1"),
     $("#motivo2"),
@@ -26,10 +25,28 @@ var TodosMotivos = [
     $("#motivo24"),
     $("#motivo25"),
     $("#motivo26"),
-    $("#motivo27")
+    $("#motivo27"),
+    $("#motivo28"),
+    $("#motivo29"),
+    $("#submotivo"),
+    $("#submotivo1"),
+    $("#submotivo2"),
+    $("#submotivo3"),
+    $("#submotivo4"),
+    $("#submotivo5"),
+    $("#submotivo6"),
+    $("#submotivo7"),
+    $("#submotivo8"),
+    $("#submotivo9"),
+    $("#nomerepresentante"),
+    $("#cpfrepresentante")
 ];
 
 var RegistradoPF = [
+    $("#motivo13"),
+    $("#motivo14"),
+    $("#motivo15"),
+    $("#motivo16"),
     $("#motivo17"),
     $("#motivo18"),
     $("#motivo19"),
@@ -40,7 +57,9 @@ var RegistradoPF = [
     $("#motivo24"),
     $("#motivo25"),
     $("#motivo26"),
-    $("#motivo27")
+    $("#motivo27"),
+    $("#motivo28"),
+    $("#motivo29")
 ];
 
 var RegistradoPJ = [
@@ -53,18 +72,39 @@ var RegistradoPJ = [
     $("#motivo8"),
     $("#motivo9"),
     $("#motivo10"),
-    $("#motivo11"),
-    $("#motivo12"),
-    $("#motivo13"),
-    $("#motivo14")
+    $("#motivo22"),
+    $("#motivo23"),
+    $("#motivo24"),
+    $("#motivo25"),
+    $("#motivo26"),
+    $("#motivo27"),
+    $("#motivo28"),
+    $("#motivo29")
 ];
 
-var NaoRegistradoPF = [$("#motivo15"), $("#motivo16")];
+var NaoRegistradoPF = [
+    $("#motivo11"),
+    $("#motivo12"),
+    $("#motivo16"),
+    $("#motivo17"),
+    $("#motivo26"),
+    $("#motivo27"),
+    $("#motivo28"),
+    $("#motivo29")
+];
 
-var NaoRegistradoPJ = [$("#motivo1"), $("#motivo11")];
+var NaoRegistradoPJ = [
+    $("#motivo1"),
+    $("#motivo5"),
+    $("#motivo10"),
+    $("#motivo26"),
+    $("#motivo27"),
+    $("#motivo28"),
+    $("#motivo29")
+];
 
 function esconder() {
-    for (k = 0; k <= 26; k++) {
+    for (k = 0; k < TodosMotivos.length; k++) {
         TodosMotivos[k].hide();
     }
 }
@@ -106,6 +146,46 @@ function EsconderParcial() {
         EsconderNaoRegistradoPJ();
     }
 }
+
+$("#submot22").click(function() {
+    if ($("#submot22").is(":checked") && $("#PF").is(":checked")) {
+        $("#submotivo1").show();
+        $("#submotivo2").show();
+        $("#submotivo3").show();
+        $("#submotivo4").show();
+        $("#submotivo5").show();
+        $("#submotivo6").show();
+    } else {
+        $("#submotivo1").hide();
+        $("#submotivo2").hide();
+        $("#submotivo3").hide();
+        $("#submotivo4").hide();
+        $("#submotivo5").hide();
+        $("#submotivo6").hide();
+    }
+});
+
+$("#submot22").click(function() {
+    if ($("#submot22").is(":checked") && $("#PJ").is(":checked")) {
+        $("#submotivo7").show();
+        $("#submotivo8").show();
+        $("#submotivo9").show();
+    } else {
+        $("#submotivo7").hide();
+        $("#submotivo8").hide();
+        $("#submotivo9").hide();
+    }
+});
+
+$("#representante").click(function() {
+    if ($("#representante").is(":checked")) {
+        $("#nomerepresentante").show();
+        $("#cpfrepresentante").show();
+    } else {
+        $("#nomerepresentante").hide();
+        $("#cpfrepresentante").hide();
+    }
+});
 
 $('input[type="radio"][name="TipoRegistro"]').click(function() {
     if ($("#registrado").is(":checked") && $("#PF").is(":checked")) {
@@ -161,5 +241,3 @@ $('input[type="radio"][name="PFPJ"]').click(function() {
         aux = 4;
     }
 });
-
-/* document.getElementById("motivo2").style.display="none"; */
