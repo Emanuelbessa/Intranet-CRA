@@ -173,7 +173,7 @@
           <div class="form-group row">
             <label for="inputoutros" class="col-sm-2 col-form-label">Outros</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="outros" placeholder="Descreva brevemente o motivo">
+              <input type="text" class="form-control" name="outrosmotivos" id="outrosmotivos" placeholder="Descreva brevemente o motivo">
             </div>
           </div>
         </div>

@@ -1,14 +1,13 @@
-var enviarAjax = function(dados, metodo, url, callback){
+var enviarAjax = function(dados, metodo, url, callback) {
     $.ajax({
         url: url,
         method: metodo,
         data: dados,
         headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+            "X-CSRF-TOKEN": $('input[name="_token"]').val()
         }
-
-    }
-    )}
+    });
+};
 var TodosMotivos = [
     $("#motivo1"),
     $("#motivo2"),
@@ -159,7 +158,10 @@ function EsconderParcial() {
 }
 
 $('input[type="checkbox"][name="checkmotivo22"]').click(function() {
-    if ($("#submot22").is(":checked") && $("#PF").is(":checked")) {
+    if (
+        $('input[type="checkbox"][name="checkmotivo22"]').is(":checked") &&
+        $("#PF").is(":checked")
+    ) {
         $("#submotivo1").show();
         $("#submotivo2").show();
         $("#submotivo3").show();
@@ -177,7 +179,10 @@ $('input[type="checkbox"][name="checkmotivo22"]').click(function() {
 });
 
 $('input[type="checkbox"][name="checkmotivo22"]').click(function() {
-    if ($("#submot22").is(":checked") && $("#PJ").is(":checked")) {
+    if (
+        $('input[type="checkbox"][name="checkmotivo22"]').is(":checked") &&
+        $("#PJ").is(":checked")
+    ) {
         $("#submotivo7").show();
         $("#submotivo8").show();
         $("#submotivo9").show();
@@ -253,31 +258,56 @@ $('input[type="radio"][name="PFPJ"]').click(function() {
     }
 });
 
-$("#enviar").click(function(){
-    var objetocheckbox = []
-    $.each($("#checkmotivo:checked"), function(){
-        objetocheckbox.push($(this).val());
+$("#enviar").click(function() {
+    var objetomotivos = [];
+    var objetosubmotivos = [];
+    $.each($("#checkmotivo:checked"), function() {
+        objetomotivos.push($(this).val());
+    });
+    $.each($("#checksubmotivo:checked"), function() {
+        objetosubmotivos.push($(this).val());
     });
 
-    var dados = {
-        'checkbox':objetocheckbox,
-        'TipoRegistro':$('input[type="radio"][name="TipoRegistro"]:checked').val(),
-        'PFPJ':$('input[type="radio"][name="PFPJ"]:checked').val(),
-        'nomeprincipal':$('input[type="text"][name="nomeprincipal"]').val(),
-        'cpfcnpjprincipal':$('input[type="text"][name="cpfcnpjprincipal"]').val(),
-        'TipoAtendimento':$('input[type="radio"][name="TipoAtendimento"]:checked').val(),
-        'TipoConclusao':$('input[type="radio"][name="TipoConclusao"]:checked').val(),
-        'Att':$('input[type="radio"][name="Att"]:checked').val(),
-        'nomerepresentante':$('input[type="text"][name="nomerepresentante"]').val(),
-        'cpfcnpjrepresentante':$('input[type="text"][name="cpfcnpjrepresentante"]').val(),
+    if (
+        objetomotivos.length < 1 &&
+        $('input[type="text"][name="outrosmotivos"]').val() == ""
+    ) {
+        // Escrever Erro por não ter motivo
     }
 
+    var dados = {
+        TamanhoObjeto: objetomotivos.length,
+        Fk_Id_Atendente: 1,
+        atendimentomotivos: objetomotivos,
+        atendimentosubmotivos: objetosubmotivos,
+        atendimentooutrosmotivos: $(
+            'input[type="text"][name="outrosmotivos"]'
+        ).val(),
+        TipoRegistro: $(
+            'input[type="radio"][name="TipoRegistro"]:checked'
+        ).val(),
+        PFPJ: $('input[type="radio"][name="PFPJ"]:checked').val(),
+        nomeprincipal: $('input[type="text"][name="nomeprincipal"]').val(),
+        cpfcnpjprincipal: $(
+            'input[type="text"][name="cpfcnpjprincipal"]'
+        ).val(),
+        TipoAtendimento: $(
+            'input[type="radio"][name="TipoAtendimento"]:checked'
+        ).val(),
+        TipoConclusao: $(
+            'input[type="radio"][name="TipoConclusao"]:checked'
+        ).val(),
+        Att: $('input[type="radio"][name="Att"]:checked').val(),
+        nomerepresentante: $(
+            'input[type="text"][name="nomerepresentante"]'
+        ).val(),
+        cpfcnpjrepresentante: $(
+            'input[type="text"][name="cpfcnpjrepresentante"]'
+        ).val()
+    };
 
-    enviarAjax(dados,'POST','/atendimento/criar-atendimento',function(resp){
-
-        if(resp.retorno) {
-
+    enviarAjax(dados, "POST", "/atendimento/criar-atendimento", function(resp) {
+        if (resp.retorno) {
         }
     });
-
 });

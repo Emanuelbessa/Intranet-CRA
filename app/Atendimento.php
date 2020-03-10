@@ -16,9 +16,9 @@ class Atendimento extends Model
     protected $fillable = [
         'Fk_Tipo_Atendimento', 'Fk_Tipo_Conclusao', 'Fk_Tipo_PFPJ', 'Fk_Tipo_Registro',
         'Fk_Id_Motivo', 'Fk_Id_Atendente', 'Att_Cadastral', 'Outros_Motivos',
-        'Nome_Atendido', 'CPFCNPJ'
+        'Nome_Atendido', 'CPFCNPJ', "Fk_Id_SubMotivos", "Nome_Representante", "CPF_Representante"
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
 }
