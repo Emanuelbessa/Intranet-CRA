@@ -39,7 +39,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <form role="form">
       @csrf
       <div class="row">
         <div class="col-md-6">
@@ -103,11 +102,11 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nome/Nome Fantasia</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+                  <input type="text" class="form-control" id="nomeprincipal" placeholder="Nome" name="nomeprincipal">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">CPF/CNPJ</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CPF/CNPJ">
+                  <input type="text" class="form-control" id="cpfcnpjprincipal" placeholder="CPF/CNPJ" name="cpfcnpjprincipal">
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="representante">
@@ -115,11 +114,11 @@
                 </div>
                 <div class="form-group" id="nomerepresentante">
                   <label for="exampleInputEmail1">Nome do Representante</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+                  <input type="text" class="form-control" id="nomerepresentante" placeholder="Nome" name="nomerepresentante">
                 </div>
                 <div class="form-group" id="cpfrepresentante">
                   <label for="exampleInputPassword1">CPF do Representante</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CPF/CNPJ">
+                  <input type="text" class="form-control" id="cpfcnpjrepresentante" placeholder="CPF/CNPJ" name="cpfcnpjrepresentante">
                 </div>
               </div>
           </div>
@@ -227,10 +226,10 @@
   </div>
 
           <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Finalizar Atendimento</button>
+            <button type="submit" class="btn btn-primary" id="enviar">Finalizar Atendimento</button>
           </div>
           <!-- /.card-footer -->
-        </form>
+        
    </div>
       <!-- /.card -->
     </section>

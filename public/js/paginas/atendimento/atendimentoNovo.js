@@ -158,7 +158,7 @@ function EsconderParcial() {
     }
 }
 
-$("#submot22").click(function() {
+$('input[type="checkbox"][name="checkmotivo22"]').click(function() {
     if ($("#submot22").is(":checked") && $("#PF").is(":checked")) {
         $("#submotivo1").show();
         $("#submotivo2").show();
@@ -176,7 +176,7 @@ $("#submot22").click(function() {
     }
 });
 
-$("#submot22").click(function() {
+$('input[type="checkbox"][name="checkmotivo22"]').click(function() {
     if ($("#submot22").is(":checked") && $("#PJ").is(":checked")) {
         $("#submotivo7").show();
         $("#submotivo8").show();
@@ -261,13 +261,15 @@ $("#enviar").click(function(){
 
     var dados = {
         'checkbox':objetocheckbox,
-        'TipoRegistro':$('input[type="radio"][name="TipoRegistro"]').val(),
-        'PFPJ':$('input[type="radio"][name="PFPJ"]').val(),
+        'TipoRegistro':$('input[type="radio"][name="TipoRegistro"]:checked').val(),
+        'PFPJ':$('input[type="radio"][name="PFPJ"]:checked').val(),
         'nomeprincipal':$('input[type="text"][name="nomeprincipal"]').val(),
         'cpfcnpjprincipal':$('input[type="text"][name="cpfcnpjprincipal"]').val(),
-        'TipoAtendimento':$('input[type="radio"][name="TipoAtendimento"]').val(),
-        'TipoConclusao':$('input[type="radio"][name="TipoConclusao"]').val(),
-        'Att':$('input[type="radio"][name="Att"]').val(),
+        'TipoAtendimento':$('input[type="radio"][name="TipoAtendimento"]:checked').val(),
+        'TipoConclusao':$('input[type="radio"][name="TipoConclusao"]:checked').val(),
+        'Att':$('input[type="radio"][name="Att"]:checked').val(),
+        'nomerepresentante':$('input[type="text"][name="nomerepresentante"]').val(),
+        'cpfcnpjrepresentante':$('input[type="text"][name="cpfcnpjrepresentante"]').val(),
     }
 
 

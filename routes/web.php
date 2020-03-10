@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/atendimento/criar-atendimento', 'AtendimentoController@criarAtendimento');
+Route::get('/painel', 'PainelController@Painel')->name('painel');
 
 Route::get('/painel', 'PainelController@Painel')->name('painel');
 

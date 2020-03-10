@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Atendimento;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,6 +22,10 @@ class AtendimentoController extends Controller
 
     public function criarAtendimento(Request $req){
         dd($req->all());
+        DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT, 0);
+        DB::beginTransaction();
+        //dd($req->checkbox);
+
         $atendimento = new Atendimento();
         
         $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
@@ -30,9 +35,22 @@ class AtendimentoController extends Controller
         $atendimento->Fk_Tipo_Atendimento = $req->TipoAtendimento;
         $atendimento->Fk_Tipo_Conclusao = $req->TipoConclusao;
         $atendimento->Att_Cadastral = $req->Att;
+        $atendimento->Fk_Id_Atendente = $req->Fk_Id_Atendente;
+        $atendimento->Fk_Id_Motivo = $req->checkbox[0];
 
-        $atendimento->checkmotivo18 = $req->Fk_Id_Motivo;
+        try{
+            $atendimento->save();
+            DB::commit();
+            DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT,1);
+            return response()->json(['retorno' => true, 'atendimento' =>$atendimento]); 
 
+        }catch(\Exception $e){
+            dd($e->getMessage());
+            DB::rollback();
+            DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT,1);
+            return response()->json(['retorno' => false]);
+
+        }
 
         
     }
