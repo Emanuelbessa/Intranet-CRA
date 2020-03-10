@@ -19,20 +19,21 @@ class AtendimentoController extends Controller
         return view('atendimentoNovo');
     }
 
-    protected function create(array $data)
-    {
-        return Atendimento::create([
-            'Fk_Tipo_Atendimento' => $data['Fk_Tipo_Atendimento'],
-            'Fk_Tipo_Conclusao' => $data['Fk_Tipo_Conclusao'],
-            'Fk_Tipo_PFPJ' => $data['Fk_Tipo_PFPJ'],
-            'Fk_Tipo_Registro' => $data['Fk_Tipo_Registro'],
-            'Fk_Id_Motivo' => $data['Fk_Id_Motivo'],
-            'Fk_Id_Atendente' => $data['Fk_Id_Atendente'],
-            'Data' => $data['Data'],
-            'Att_Cadastral' => $data['Att_Cadastral'],
-            'Outros_Motivos' => $data['Outros_Motivos'],
-            'Nome_Atendido' => $data['Nome_Atendido'],
-            'CPF/CNPJ' => $data['CPF/CNPJ'],
-        ]);
+    public function criarAtendimento(Request $req){
+        dd($req->all());
+        $atendimento = new Atendimento();
+        
+        $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
+        $atendimento->Fk_Tipo_PFPJ = $req->PFPJ;
+        $atendimento->Nome_Atendido = $req->nomeprincipal;
+        $atendimento->CPFCNPJ = $req->cpfcnpjprincipal;
+        $atendimento->Fk_Tipo_Atendimento = $req->TipoAtendimento;
+        $atendimento->Fk_Tipo_Conclusao = $req->TipoConclusao;
+        $atendimento->Att_Cadastral = $req->Att;
+
+        $atendimento->checkmotivo18 = $req->Fk_Id_Motivo;
+
+
+        
     }
 }

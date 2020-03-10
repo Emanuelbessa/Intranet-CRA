@@ -1,3 +1,14 @@
+var enviarAjax = function(dados, metodo, url, callback){
+    $.ajax({
+        url: url,
+        method: metodo,
+        data: dados,
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+        }
+
+    }
+    )}
 var TodosMotivos = [
     $("#motivo1"),
     $("#motivo2"),
@@ -240,4 +251,31 @@ $('input[type="radio"][name="PFPJ"]').click(function() {
         }
         aux = 4;
     }
+});
+
+$("#enviar").click(function(){
+    var objetocheckbox = []
+    $.each($("#checkmotivo:checked"), function(){
+        objetocheckbox.push($(this).val());
+    });
+
+    var dados = {
+        'checkbox':objetocheckbox,
+        'TipoRegistro':$('input[type="radio"][name="TipoRegistro"]').val(),
+        'PFPJ':$('input[type="radio"][name="PFPJ"]').val(),
+        'nomeprincipal':$('input[type="text"][name="nomeprincipal"]').val(),
+        'cpfcnpjprincipal':$('input[type="text"][name="cpfcnpjprincipal"]').val(),
+        'TipoAtendimento':$('input[type="radio"][name="TipoAtendimento"]').val(),
+        'TipoConclusao':$('input[type="radio"][name="TipoConclusao"]').val(),
+        'Att':$('input[type="radio"][name="Att"]').val(),
+    }
+
+
+    enviarAjax(dados,'POST','/atendimento/criar-atendimento',function(resp){
+
+        if(resp.retorno) {
+
+        }
+    });
+
 });
