@@ -17,7 +17,7 @@ $title = 'Intranet - Atendimento';
             <a href="painel" class="nav-link">Home</a>
           </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Novo Atendimento</a>
+      <a href="atendimento/novo" class="nav-link">Novo Atendimento</a>
  </li>
  <li class="nav-item d-none d-sm-inline-block">
   <a href="#" class="nav-link">Contato</a>
@@ -89,7 +89,7 @@ $title = 'Intranet - Atendimento';
         <!-- small box -->
         <div class="small-box bg-secondary">
           <div class="inner">
-            <h3>150</h3>
+            <h3>XXX</h3>
     
             <p>Ver um atendimento</p>
           </div>
