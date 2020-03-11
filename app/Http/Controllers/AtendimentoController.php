@@ -41,28 +41,34 @@ class AtendimentoController extends Controller
         
         try{
             
-                for($i = 0; $i < intval($req->TamanhoObjeto); $i++){
+            for($i = 0; $i < intval($req->TamanhoObjeto); $i++){
 
-                    $atendimento = new Atendimento();
-                    $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
-                    $atendimento->Fk_Tipo_PFPJ = $req->PFPJ;
-                    $atendimento->Nome_Atendido = $req->nomeprincipal;
-                    $atendimento->CPFCNPJ = $req->cpfcnpjprincipal;
-                    $atendimento->Fk_Tipo_Atendimento = $req->TipoAtendimento;
-                    $atendimento->Fk_Tipo_Conclusao = $req->TipoConclusao;
-                    $atendimento->Att_Cadastral = $req->Att;
-                    $atendimento->Fk_Id_Atendente = $req->Fk_Id_Atendente;
-                    $atendimento->Fk_Id_Motivo = $req->atendimentomotivos[$i];
-                    $atendimento->Fk_Id_SubMotivos = $req->atendimentosubmotivos[$i];
-                    $atendimento->Fk_Id_Atendente = Auth::user()->id;
-                    $atendimento->save();
+                $atendimento = new Atendimento();
+                $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
+                $atendimento->Fk_Tipo_PFPJ = $req->PFPJ;
+                $atendimento->Nome_Atendido = $req->nomeprincipal;
+                $atendimento->CPFCNPJ = $req->cpfcnpjprincipal;
+                $atendimento->Nome_Representante = $req->nomerepresentante;
+                $atendimento->CPF_Representante = $req->cpfcnpjrepresentante;
+                $atendimento->Fk_Tipo_Atendimento = $req->TipoAtendimento;
+                $atendimento->Fk_Tipo_Conclusao = $req->TipoConclusao;
+                $atendimento->Att_Cadastral = $req->Att;
+                $atendimento->Fk_Id_Atendente = $req->Fk_Id_Atendente;
+                $atendimento->Fk_Id_Motivo = $req->atendimentomotivos[$i];
+                if($req->atendimentomotivos[$i] == 22){
+                $atendimento->Fk_Id_SubMotivos = $req->atendimentosubmotivos[0];
                 }
+                $atendimento->Fk_Id_Atendente = Auth::user()->id;
+                $atendimento->save();
+            }
             if($req->atendimentooutrosmotivos){
                 $atendimento = new Atendimento();
                 $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
                 $atendimento->Fk_Tipo_PFPJ = $req->PFPJ;
                 $atendimento->Nome_Atendido = $req->nomeprincipal;
                 $atendimento->CPFCNPJ = $req->cpfcnpjprincipal;
+                $atendimento->Nome_Representante = $req->nomerepresentante;
+                $atendimento->CPF_Representante = $req->cpfcnpjrepresentante;
                 $atendimento->Fk_Tipo_Atendimento = $req->TipoAtendimento;
                 $atendimento->Fk_Tipo_Conclusao = $req->TipoConclusao;
                 $atendimento->Att_Cadastral = $req->Att;
@@ -81,6 +87,7 @@ class AtendimentoController extends Controller
             DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT,1);
             return response()->json(['retorno' => false]);
         }
+        
     }
 }
 /* 
