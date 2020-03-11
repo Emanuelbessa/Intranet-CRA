@@ -20,9 +20,6 @@ Auth::routes();
 Route::post('/atendimento/criar-atendimento', 'AtendimentoController@criarAtendimento');
 Route::get('/painel', 'PainelController@Painel')->name('painel');
 
-Route::get('/painel', 'PainelController@Painel')->name('painel');
-
-
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('painel');

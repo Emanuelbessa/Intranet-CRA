@@ -29,7 +29,7 @@ $title = 'Intranet - Atendimento';
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Olá, Nome</h1>
+          <h1 class="m-0 text-dark">Olá, {{$usuario_nome}} {{$usuario_sobrenome}}</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -41,9 +41,9 @@ $title = 'Intranet - Atendimento';
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h3>150</h3>
+        <h3>{{$atendimentosfeitos}}</h3>
 
-        <p>Atendimentos Feitos Hoje</p>
+        <p>Atendimentos Totais Feitos Hoje</p>
       </div>
       <div class="icon">
         <i class="fas fa-search"></i>
@@ -56,9 +56,9 @@ $title = 'Intranet - Atendimento';
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h3>150</h3>
+        <h3>{{$atendimentostelefone}}</h3>
 
-        <p>Atendimentos Feitos Hoje</p>
+        <p>Atendimentos Por Telefone Feitos Hoje</p>
       </div>
       <div class="icon">
         <i class="fas fa-search"></i>
@@ -87,11 +87,11 @@ $title = 'Intranet - Atendimento';
     
     <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-info">
+        <div class="small-box bg-secondary">
           <div class="inner">
             <h3>150</h3>
     
-            <p>Atendimentos Feitos Hoje</p>
+            <p>Ver um atendimento</p>
           </div>
           <div class="icon">
             <i class="fas fa-search"></i>

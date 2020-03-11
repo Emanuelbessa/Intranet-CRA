@@ -268,16 +268,13 @@ $("#enviar").click(function() {
         objetosubmotivos.push($(this).val());
     });
 
-    if (
-        objetomotivos.length < 1 &&
-        $('input[type="text"][name="outrosmotivos"]').val() == ""
+    /*if ($('input[type="text"][name="outrosmotivos"]').val() == ""
     ) {
         // Escrever Erro por não ter motivo
-    }
+    }*/
 
     var dados = {
         TamanhoObjeto: objetomotivos.length,
-        Fk_Id_Atendente: 1,
         atendimentomotivos: objetomotivos,
         atendimentosubmotivos: objetosubmotivos,
         atendimentooutrosmotivos: $(
