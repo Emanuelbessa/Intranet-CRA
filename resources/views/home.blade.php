@@ -4,61 +4,65 @@ $title = 'Intranet - Home';
 
 @includeif('layouts.head')
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
 
-<!-- <div class="containerTopo">
-    <h3> Soluções CRA-BA</h3>
-    <p>Aqui você terá acesso a todos os sistemas CRA-BA </p>
- </div> -->
+<!-- Vendor CSS Files -->
+
+<link href="{{ asset('AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{ asset('AdminLTE/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="AdminLTE/css/style.css" rel="stylesheet">
+
+<?php
+$title = 'Intranet - Home';
+?>
+
+@includeif('layouts.head')
 
 <body class="bg-light">
+  <header id="header" class="header header-hide">
+    <div class="container">
+
+      <div class="text-center">
+        <h1><a>CRA-BA - Conselho Regional de Administração da Bahia</h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#body"><img src="assets/img/logo.png" alt="" title="" /></a>-->
+      </div>
+      </div>
+    </header>
   <!-- Page Content -->
   <div class="container">
 
 
-    <div class="row align-items-center my-5">
-      <div class="col-lg-7">
-        <img class="img-fluid rounded" src="salvador.jpg" alt="">
+    <div class="row align-items-center">
+      <div class="container">
+        
+          <img class="mx-auto d-block rounded" src="LogoCRA.png" alt="">
       </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="LogoCRA.png" alt="">
-          <div class="card-body">
-            <h1 class="font-weight-bold justify-content-center text-primary">Bem Vindo!</h1>
-            <h5 class="card-text text-dark">Aqui estão todos os sistemas do CRA-BA</h5>
-            <h6 class="card-text text-dark">É necessário login e senha para acessar os sistemas</h6>
-          </div>
-        </div>
+      <div class="mx-auto container" id="hero">
+        <h1 id="idh1" class="font-weight-bold text-center text-primary">Bem Vindo!</h1>
+        <h3 id="idh3" class="card-text text-dark">Aqui estão todos os sistemas do CRA-BA</h3>
+        <img class="mx-auto d-block rounded" src="hero-img.png" alt="">
       </div>
-      <!-- /.col-md-6 -->
     </div>
-    <div class="border-top my-2"></div>
+    <div class="border-top"></div>
     <div class="border-top my-4"></div>
-    <!-- Page Features -->
-    <div class="row text-center">
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="intranet.jpg" alt="">
-          <div class="card-body">
-            <h4 class="justify-content-center">Intranet CRA-BA</h4>
-            <p class="card-text">Informações importantes do CRA-BA</p>
-          </div>
-          <div class="card-footer">
-            <a href="painel" class="btn btn-primary">Acessar</a>
-          </div>
-        </div>
-      </div>
+    <!-- ======= Get Started Section ======= -->
+    <section id="get-started" class="padd-section text-center wow fadeInUp">
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="sisatendimento.jpg" alt="">
-          <div class="card-body">
-            <h4 class="justify-content-center">Atendimento</h4>
-            <p class="card-text">Modulo de Auxilio para Atendimento</p>
-          </div>
-          <div class="card-footer">
-            @if(!Auth::check())
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-block">
+
+              <img src="discussion.svg" alt="img" class="img-fluid">
+              <h4>Atendimento</h4>
+              <p>Modulo de Auxilio para Atendimento</p>
+              @if(!Auth::check())
             <a class="btn btn-primary" href="{{ route('login') }}">
               Entrar
             </a>
@@ -66,40 +70,35 @@ $title = 'Intranet - Home';
               Acessar
             </a>
             @endif
+
+            </div>
           </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-block">
+
+              <img src="browser.svg" alt="img" class="img-fluid">
+              <h4>Intranet CRA-BA</h4>
+              <p>Informações importantes do CRA-BA</p>
+              <a href="painel" class="btn btn-primary">Acessar</a>
+
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-block">
+
+              <img src="asteroid.svg" alt="img" class="img-fluid">
+              <h4>Próxima Ideia</h4>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+              <a href="#">Acesse</a>
+
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
-              neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente,
-              tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- /.row -->
+    </section><!-- End Get Started Section -->
 
   </div>
   <!-- /.container -->
@@ -107,13 +106,13 @@ $title = 'Intranet - Home';
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; CRA-BA - Equipe de Desenvolvimento 2020</p>
     </div>
     <!-- /.container -->
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <script src="AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
