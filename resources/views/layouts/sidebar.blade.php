@@ -14,7 +14,10 @@
         <img src="{{ asset('AdminLTE/dist/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        @php
+            $usuario = Auth::user();
+        @endphp
+        <a href="#" class="d-block">{{$usuario->first_name}} {{$usuario->last_name}}</a>
       </div>
     </div>
 

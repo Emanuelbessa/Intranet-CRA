@@ -27,8 +27,6 @@ $title = 'Intranet - Home';
 
       <div class="text-center">
         <h1><a>CRA-BA - Conselho Regional de Administração da Bahia</h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#body"><img src="assets/img/logo.png" alt="" title="" /></a>-->
       </div>
       </div>
     </header>
@@ -80,7 +78,14 @@ $title = 'Intranet - Home';
               <img src="browser.svg" alt="img" class="img-fluid">
               <h4>Intranet CRA-BA</h4>
               <p>Informações importantes do CRA-BA</p>
-              <a href="painel" class="btn btn-primary">Acessar</a>
+              @if(!Auth::check())
+            <a class="btn btn-primary" href="{{ route('login') }}">
+              Entrar
+            </a>
+            @else<a class="btn btn-primary" href="{{ route('painel') }}">
+              Acessar
+            </a>
+            @endif
 
             </div>
           </div>

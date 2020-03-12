@@ -231,7 +231,7 @@
         </div>
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary" id="enviar">Finalizar Atendimento</button>
+          <button onclick="return confirm('Gostaria de Finalizar o atendimento?')" type="submit" class="btn btn-primary" id="enviar">Finalizar Atendimento</button>
         </div>
         <!-- /.card-footer -->
 

@@ -35,13 +35,22 @@
           <i class="fas fa-user-plus mr-2"></i> Adicionar Usuário
         </a>
         <div class="dropdown-divider"></div>
-        <a href="{{ route('admin') }}" class="dropdown-item">
-          <i class="fas fa-user-edit mr-2"></i> Permissões de Usuário
-        </a>
-        <div class="dropdown-divider"></div>
+        @php
+
+        $obj = [];
+            $user = Auth::user();
+            $iduser = $user->id;
+            $roles = DB::table('user_role')->where('user_id', $iduser)->get();
+
+            foreach ($roles as $role) {
+              array_push($obj, $role->role_id);
+        }
+        @endphp
+        @if(in_array("1", $obj))
         <a href="{{ route('admin') }}" class="dropdown-item">
           <i class="fas fa-user-cog mr-2"></i> Gerenciamento Interno
         </a>
+        @endif
         <div class="dropdown-divider"></div>
         @if(!Auth::check())
         <a class="dropdown-item" href="{{ route('login') }}">
