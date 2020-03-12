@@ -9,7 +9,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -24,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    
+
     <style>
         .example-modal .modal {
             position: relative;
@@ -35,13 +36,14 @@
             display: block;
             z-index: 1;
         }
+
         .example-modal .modal {
             background: transparent !important;
         }
     </style>
-  </head>
+</head>
 
-  <!-- 
+<!-- 
  <-- jQuery 
  <script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
  <-- jQuery UI 1.11.4 
