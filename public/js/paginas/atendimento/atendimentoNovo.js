@@ -1,11 +1,25 @@
-var enviarAjax = function(dados, metodo, url, callback) {
+var enviarAjax = function(dados, metodo, url, callback){
     $.ajax({
         url: url,
         method: metodo,
         data: dados,
         headers: {
-            "X-CSRF-TOKEN": $('input[name="_token"]').val()
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
         }
+
+    }).fail(function(jqXHR, exception){
+        var msg = {
+            'climsg' : 'Erro ao efetuar a operação!',
+            'systemMsg' : null
+        }
+
+        $.each(jqXHR.responseJSON, function(key,value) {
+            msg.systemMsg += value;
+        });
+
+        toastr.error(msg.climsg);
+    }).done(function(retorno){
+        callback(retorno);
     });
 };
 var TodosMotivos = [
@@ -305,6 +319,7 @@ $("#enviar").click(function() {
 
     enviarAjax(dados, "POST", "/atendimento/criar-atendimento", function(resp) {
         if (resp.retorno) {
+            toastr.success("Atendimento Validado");
         }
     });
 });

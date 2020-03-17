@@ -4,6 +4,11 @@
     <title>{{ $title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Jquery -->
+    <script src="{{ URL::asset('AdminLTE/plugins/jquery/jquery.js') }}"></script>
+    <!-- ToastR -->
+    <script src="{{ URL::asset('AdminLTE/plugins/toastr/toastr.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ URL::asset('AdminLTE/plugins/toastr/toastr.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
