@@ -33,6 +33,10 @@ class AtendimentoController extends Controller
         return view('Atendimento/atendimentoNovo');
     }
 
+    public function relatorio(){
+        return view('Atendimento/atendimentoRelatorio');
+    }
+
     public function criarAtendimento(Request $req)
     {
 
