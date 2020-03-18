@@ -15,7 +15,7 @@ class AtendimentoController extends Controller
 {
     public function Atendimento()
     {
-        
+
         $user = Auth::user();
         $carbon = Carbon::today();
         $atendimentostelefone = Atendimento::where(['Fk_Id_Atendente' => $user->id])->where('Fk_Tipo_Atendimento', '=', '2')->get();
@@ -38,11 +38,11 @@ class AtendimentoController extends Controller
 
         DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT, 0);
         DB::beginTransaction();
-        
-        try{
-            
-            for($i = 0; $i < intval($req->TamanhoObjeto); $i++){
 
+        try {
+                $atendimento = null;
+            for ($i = 0; $i < intval($req->TamanhoObjeto); $i++) {
+                
                 $atendimento = new Atendimento();
                 $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
                 $atendimento->Fk_Tipo_PFPJ = $req->PFPJ;
@@ -55,13 +55,13 @@ class AtendimentoController extends Controller
                 $atendimento->Att_Cadastral = $req->Att;
                 $atendimento->Fk_Id_Atendente = $req->Fk_Id_Atendente;
                 $atendimento->Fk_Id_Motivo = $req->atendimentomotivos[$i];
-                if($req->atendimentomotivos[$i] == 22){
-                $atendimento->Fk_Id_SubMotivos = $req->atendimentosubmotivos[0];
+                if ($req->atendimentomotivos[$i] == 22) {
+                    $atendimento->Fk_Id_SubMotivos = $req->atendimentosubmotivos[0];
                 }
                 $atendimento->Fk_Id_Atendente = Auth::user()->id;
                 $atendimento->save();
             }
-            if($req->atendimentooutrosmotivos){
+            if ($req->atendimentooutrosmotivos) {
                 $atendimento = new Atendimento();
                 $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
                 $atendimento->Fk_Tipo_PFPJ = $req->PFPJ;
@@ -78,16 +78,14 @@ class AtendimentoController extends Controller
                 $atendimento->save();
             }
             DB::commit();
-            DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT,1);
-            return response()->json(['retorno' => true]);
-
-        }catch(\Exception $e){
+            DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT, 1);
+            return response()->json(['retorno' => true, 'atendimento' => $atendimento]);
+        } catch (\Exception $e) {
             dd($e->getMessage());
             DB::rollback();
-            DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT,1);
-            return response()->json(['retorno' => false]);
+            DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT, 1);
+            return response()->json(['retorno' => false, 'atendimento' => $atendimento]);
         }
-        
     }
 }
 /* 

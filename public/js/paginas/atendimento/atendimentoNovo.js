@@ -292,34 +292,39 @@ $("#enviar").click(function() {
         atendimentomotivos: objetomotivos,
         atendimentosubmotivos: objetosubmotivos,
         atendimentooutrosmotivos: $(
-            'input[type="text"][name="outrosmotivos"]'
+            'input[name="outrosmotivos"]'
         ).val(),
         TipoRegistro: $(
-            'input[type="radio"][name="TipoRegistro"]:checked'
+            'input[name="TipoRegistro"]:checked'
         ).val(),
-        PFPJ: $('input[type="radio"][name="PFPJ"]:checked').val(),
-        nomeprincipal: $('input[type="text"][name="nomeprincipal"]').val(),
+        PFPJ: $('input[name="PFPJ"]:checked').val(),
+        nomeprincipal: $('input[name="nomeprincipal"]').val(),
         cpfcnpjprincipal: $(
-            'input[type="text"][name="cpfcnpjprincipal"]'
+            'input[name="cpfcnpjprincipal"]'
         ).val(),
         TipoAtendimento: $(
-            'input[type="radio"][name="TipoAtendimento"]:checked'
+            'input[name="TipoAtendimento"]:checked'
         ).val(),
         TipoConclusao: $(
-            'input[type="radio"][name="TipoConclusao"]:checked'
+            'input[name="TipoConclusao"]:checked'
         ).val(),
-        Att: $('input[type="radio"][name="Att"]:checked').val(),
+        Att: $('input[name="Att"]:checked').val(),
         nomerepresentante: $(
-            'input[type="text"][name="nomerepresentante"]'
+            'input[name="nomerepresentante"]'
         ).val(),
         cpfcnpjrepresentante: $(
-            'input[type="text"][name="cpfcnpjrepresentante"]'
+            'input[name="cpfcnpjrepresentante"]'
         ).val()
     };
 
     enviarAjax(dados, "POST", "/atendimento/criar-atendimento", function(resp) {
         if (resp.retorno) {
-            toastr.success("Atendimento Validado");
+            toastr.success("Atendimento Feito Com Sucesso");
+            setTimeout(()=>{    
+            window.location.replace(window.location.origin + "/atendimento");
+            }, 5000)
+        }else{
+            toastr.error("Algo de Errado Ocorreu\nRevise se os campos estão marcados corretamente");
         }
     });
 });
