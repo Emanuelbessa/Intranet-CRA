@@ -171,7 +171,7 @@
           <div class="card-body">
             <div class="form-group">
 
-              @includeif('MotivosAtendimento')
+              @includeif('Atendimento.MotivosAtendimento')
 
             </div>
             <div class="form-group row">

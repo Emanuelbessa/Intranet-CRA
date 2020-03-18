@@ -20,7 +20,7 @@ class AtendimentoController extends Controller
         $carbon = Carbon::today();
         $atendimentostelefone = Atendimento::where(['Fk_Id_Atendente' => $user->id])->where('Fk_Tipo_Atendimento', '=', '2')->get();
         $atendimentofeitos = Atendimento::where(['Fk_Id_Atendente' => $user->id])->where('created_at', '>', $carbon)->get();
-        return view('atendimento',[
+        return view('Atendimento/atendimento',[
             'usuario_nome' => $user->first_name,
             'usuario_sobrenome' =>$user->last_name,
             'atendimentosfeitos' => count($atendimentofeitos),
@@ -30,7 +30,7 @@ class AtendimentoController extends Controller
 
     public function atendimentoNovo()
     {
-        return view('atendimentoNovo');
+        return view('Atendimento/atendimentoNovo');
     }
 
     public function criarAtendimento(Request $req)

@@ -7,9 +7,6 @@ $title = 'Intranet - Atendimento';
 @includeif('layouts.head')
 
 <body class="">
-
-
-
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -21,6 +18,27 @@ $title = 'Intranet - Atendimento';
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contato</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-cogs"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <div class="dropdown-divider"></div>
+          @if(!Auth::check())
+          <a class="dropdown-item" href="{{ route('login') }}">
+            <i class="fas fa-file mr-2"></i>Entrar
+          </a>
+          @else
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{ route('logout') }}">
+            <i class="fas fa-file mr-2"></i>Sair
+          </a>
+          @endif
+        </div>
       </li>
     </ul>
   </nav>
