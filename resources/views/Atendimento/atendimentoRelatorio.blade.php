@@ -57,15 +57,6 @@
         </div>
       </div>
     </form>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
   </nav>
   <!-- /.navbar -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -287,17 +278,10 @@
                 <div class="form-group">
                   <label>Multiple</label>
                   <select class="duallistbox" multiple="multiple">
-                    <option>Motivo 1</option>
-                    <option>Motivo 2</option>
-                    <option>Motivo 3</option>
-                    <option>Motivo 4</option>
-                    <option>Motivo 5</option>
-                    <option>Motivo 6</option>
-                    <option>Motivo 7</option>
-                    <option>Motivo 8</option>
-                    <option>Motivo 9</option>
-                    <option>Motivo 10</option>
-                    <option>Motivo 11</option>
+                    @foreach ($motivos as $motivo){
+                      <option>{{$motivo->Nome_Motivo}}</option>
+                    }
+                    @endforeach
                   </select>
                 </div>
                 <!-- /.form-group -->
@@ -367,9 +351,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.3-pre
+      <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a href="http://cra-ba.org.br">CRA-BA</a>.</strong> All rights
     reserved.
   </footer>
 

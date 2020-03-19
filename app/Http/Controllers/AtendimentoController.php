@@ -34,7 +34,11 @@ class AtendimentoController extends Controller
     }
 
     public function relatorio(){
-        return view('Atendimento/atendimentoRelatorio');
+        
+        
+        $motivos = DB::table('motivos')->get();
+
+        return view('Atendimento/atendimentoRelatorio', ['motivos' => $motivos]);
     }
 
     public function criarAtendimento(Request $req)
