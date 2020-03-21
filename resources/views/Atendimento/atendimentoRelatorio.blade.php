@@ -221,8 +221,10 @@
           </div>
         </div><!-- /.container-fluid -->
       </section>
-
       <!-- Main content -->
+      <!-- Inicio do Form -->
+    <form action="{{action('AtendimentoController@relatorioNovo')}}" method="POST">
+      {{ csrf_field() }}
       <section class="content">
         <div class="container-fluid">
           <!-- SELECT2 EXAMPLE -->
@@ -244,15 +246,20 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Filtros</label>
-                    <select class="select2" multiple="multiple" data-placeholder="Selecione os Filtros"
+                    <select name="filtros[]" id="filtros" class="select2" multiple="multiple" data-placeholder="Selecione os Filtros"
                       style="width: 100%;">
-                      <option>PF</option>
-                      <option>PJ</option>
-                      <option>Registrado</option>
-                      <option>Não Registrado</option>
-                      <option>Presencial</option>
-                      <option>Telefone</option>
-                      <option>Outros</option>
+                      @foreach ($pfpj as $pfpj_value){
+                      <option value="{{$pfpj_value->Nome_Tipo_PFPJ}}">
+                        {{$pfpj_value->Nome_Tipo_PFPJ}}</option>
+                      }@endforeach
+                      @foreach ($tipo_atendimento as $tipo_atendimento_value)
+                      <option value="{{$tipo_atendimento_value->Nome_Tipo_Atendimento}}">
+                        {{$tipo_atendimento_value->Nome_Tipo_Atendimento}}</option>
+                      @endforeach
+                      @foreach ($tipo_registro as $tipo_registro_value)
+                      <option value="{{$tipo_registro_value->Nome_Tipo_Registro}}">
+                        {{$tipo_registro_value->Nome_Tipo_Registro}}</option>
+                      @endforeach
                     </select>
                   </div>
                   <!-- /.form-group -->
@@ -267,7 +274,6 @@
             </div>
           </div>
           <!-- /.card -->
-
           <div class="card card-gray">
             <div class="card-header">
               <h3 class="card-title">Motivos do Atendimento</h3>
@@ -285,9 +291,9 @@
                 <div class="col-12">
                   <div class="form-group">
                     <label>Multiple</label>
-                    <select class="duallistbox" multiple="multiple">
+                    <select id="motivos" name="motivos[]" class="duallistbox" multiple="multiple">
                       @foreach ($motivos as $motivo){
-                      <option>{{$motivo->Nome_Motivo}}</option>
+                      <option value="{{$motivo->Id_Motivo}}">{{$motivo->Nome_Motivo}}</option>
                       }
                       @endforeach
                     </select>
@@ -315,47 +321,44 @@
                 <div class="card-body">
                   <!-- Date dd/mm/yyyy -->
                   <div class="form-group">
-                    <label>Date masks:</label>
-
+                    <label>Data Inicial e Data Final:</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                       </div>
-                      <input type="text" class="form-control" data-inputmask-alias="datetime"
+                      <input name="datainicial" type="text" class="form-control" data-inputmask-alias="datetime"
                         data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                     </div>
                     <!-- /.input group -->
                   </div>
                   <!-- /.form group -->
-
                   <!-- Date mm/dd/yyyy -->
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                       </div>
-                      <input type="text" class="form-control" data-inputmask-alias="datetime"
+                      <input name="datafinal" type="text" class="form-control" data-inputmask-alias="datetime"
                         data-inputmask-inputformat="mm/dd/yyyy" data-mask>
                     </div>
                     <!-- /.input group -->
                   </div>
                   <!-- /.form group -->
-
+                  <div>
+                    <button class="btn btn-primary" type="submit">Ok</button>
+                  </div>
                 </div>
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-
-
-
             </div>
             <!-- /.col (left) -->
-
             <!-- /.col (right) -->
           </div>
           <!-- /.row -->
         </div><!-- /.container-fluid -->
       </section>
+    </form>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

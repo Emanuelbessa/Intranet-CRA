@@ -64,4 +64,11 @@ Route::group(['middleware' => 'web'], function () {
         'roles' => ['Administrador', 'Gestor'],
         'as' => 'relatorio'
     ]);
+
+    Route::post('/atendimento/relatorio/Novo', [
+        'uses' => 'AtendimentoController@relatorioNovo',
+        'middleware' => 'roles',
+        'roles' => ['Administrador', 'Gestor'],
+        'as' => 'relatorioNovo'
+    ]);
 });

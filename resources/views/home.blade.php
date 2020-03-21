@@ -34,8 +34,6 @@ $title = 'Intranet - Home';
   </header>
   <!-- Page Content -->
   <div class="container">
-
-
     <div class="row align-items-center">
       <div class="container">
 

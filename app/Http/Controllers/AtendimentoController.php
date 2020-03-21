@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use Carbon\Carbon;
-use App\Atendimento;
+use App\{Atendimento, PFPJ, TipoAtendimento, TipoRegistro};
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
@@ -35,10 +35,12 @@ class AtendimentoController extends Controller
 
     public function relatorio()
     {
-
+        $tipo_atendimento = DB::table('tipo_atendimento')->get();
+        $tipo_pfpj = DB::table('tipo_pfpj')->get();
+        $tipo_registro = DB::table('tipo_registro')->get();
         $motivos = DB::table('motivos')->get();
 
-        return view('Atendimento/atendimentoRelatorio', ['motivos' => $motivos]);
+        return view('Atendimento/atendimentoRelatorio', ['motivos' => $motivos, 'pfpj' => $tipo_pfpj, 'tipo_atendimento' => $tipo_atendimento, 'tipo_registro' => $tipo_registro]);
     }
 
     public function criarAtendimento(Request $req)
@@ -94,6 +96,100 @@ class AtendimentoController extends Controller
             DB::getPdo()->setAttribute(\PDO::ATTR_AUTOCOMMIT, 1);
             return response()->json(['retorno' => false, 'atendimento' => $atendimento]);
         }
+    }
+
+    public function relatorioNovo(Request $req)
+    {
+        
+        if ($req->filtros == null) {
+            $req->filtros = ['Pessoa Fisica', 'Pessoa Juridica', 'Registrado', 'Nao Registrado', 'Presencial', 'Telefone', 'Outros'];
+        }
+
+        $tipo_atendimento = new TipoAtendimento();
+        $tipo_pfpj = new PFPJ();
+        $tipo_registro = new TipoRegistro();
+
+        $tipo_pfpj = PFPJ::all();
+        foreach ($tipo_pfpj as $pfpj) {
+            $PFPJ_Array[] = $pfpj->Nome_Tipo_PFPJ;
+        }
+        $tipo_registro = TipoRegistro::all();
+        foreach ($tipo_registro as $registro) {
+            $Registro_Array[] = $registro->Nome_Tipo_Registro;
+        }
+        $tipo_atendimento = TipoAtendimento::all();
+        foreach ($tipo_atendimento as $atendimento) {
+            $Atendimento_Array[] = $atendimento->Nome_Tipo_Atendimento;
+        }
+
+        $PFPJ = array_intersect($PFPJ_Array, $req->filtros);
+        $Registro = array_intersect($Registro_Array, $req->filtros);
+        $Atend = array_intersect($Atendimento_Array, $req->filtros);
+
+
+ //dd($PFPJ, $Registro, $Atend);
+        /*if (in_array("Pessoa Fisica", $req->filtros) xor in_array("Pessoa Juridica", $req->filtros)) {
+                    $tipo_pfpj = PFPJ::where('Nome_Tipo_PFPJ', $req->filtros[$i])->first()->Id_Tipo_PFPJ;
+                }
+
+                if (in_array("Registrado", $req->filtros) xor in_array("Nao Registrado", $req->filtros)) {
+                    $tipo_registro = TipoRegistro::where('Nome_Tipo_Registro', $req->filtros[$i])->first()->Id_Tipo_Registro;       
+                }
+                */
+        /*if (in_array("Presencial", $req->filtros) || in_array("Telefone", $req->filtros) || in_array("Outros", $req->filtros)) {
+                    $tipo_atendimento = TipoAtendimento::where('Nome_Tipo_Atendimento' , $req->filtros[$i])->first()->Id_Tipo_Atendimento;
+                    $filtros[$i] = $tipo_atendimento;
+                    dd($filtros);
+                    if (!$tipo_atendimento->isEmpty()) {
+                        foreach ($filtros[$i] as $filtro) {
+                            $filtros_array[$i] = $filtro->Id_Tipo_Atendimento;
+                        }
+                        // dd($filtros_array);
+                    }
+                }*/
+
+        //dd($filtros);
+
+
+ 
+        if ($req->motivos == null) {
+            $motivos = DB::table('motivos')->get();
+            foreach ($motivos as $motivo) {
+                $Motivos[] = $motivo->Id_Motivo;
+            }
+        } else {
+            for ($x = 0; $x < sizeof($req->motivos); $x++) {
+                $motivos[$x] = $req->motivos[$x];
+            }
+        }
+
+        if ($PFPJ == null) {
+            $PFPJ = DB::table('tipo_pfpj')->pluck('Id_Tipo_PFPJ');
+            /*foreach ($PFPJ as $pf_pj) {
+                $Pessoas[] = $pf_pj->Id_Tipo_PFPJ;
+            }*/
+           // dd($PFPJ);
+        } else {
+            $PFPJ = PFPJ::where('Nome_Tipo_PFPJ', $PFPJ)->first()->Id_Tipo_PFPJ;
+        }
+
+
+        dd($PFPJ, $Registro, $Atend, $Motivos);
+
+
+        $datainicial = $req->datainicial;
+        $datafinal = $req->datafinal;
+
+        $AtendimentosFiltrados = DB::table('atendimento')
+            ->whereIn('Fk_Tipo_Registro', $Registro)
+            ->whereIn('Fk_Tipo_PFPJ', $PFPJ)
+            ->whereIn('Fk_Tipo_Atendimento', $Atend)
+            ->whereIn('Fk_Id_Motivo', $Motivos)
+            ->get();
+
+        dd($AtendimentosFiltrados);
+
+        return view('Atendimento/atendimentoRelatorioResultado');
     }
 }
 /* 
