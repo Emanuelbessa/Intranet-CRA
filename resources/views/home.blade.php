@@ -5,7 +5,9 @@ $title = 'Intranet - Home';
 @includeif('layouts.head')
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i"
+  rel="stylesheet">
 
 <!-- Vendor CSS Files -->
 
@@ -28,16 +30,16 @@ $title = 'Intranet - Home';
       <div class="text-center">
         <h1><a>CRA-BA - Conselho Regional de Administração da Bahia</h1>
       </div>
-      </div>
-    </header>
+    </div>
+  </header>
   <!-- Page Content -->
   <div class="container">
 
 
     <div class="row align-items-center">
       <div class="container">
-        
-          <img class="mx-auto d-block rounded" src="LogoCRA.png" alt="">
+
+        <img class="mx-auto d-block rounded" src="LogoCRA.png" alt="">
       </div>
       <div class="mx-auto container" id="hero">
         <h1 id="idh1" class="font-weight-bold text-center text-primary">Bem Vindo!</h1>
@@ -61,13 +63,13 @@ $title = 'Intranet - Home';
               <h4>Atendimento</h4>
               <p>Modulo de Auxilio para Atendimento</p>
               @if(!Auth::check())
-            <a class="btn btn-primary" href="{{ route('login') }}">
-              Entrar
-            </a>
-            @else<a class="btn btn-primary" href="{{ route('atendimento') }}">
-              Acessar
-            </a>
-            @endif
+              <a class="btn btn-primary" href="{{ route('login') }}">
+                Entrar
+              </a>
+              @else<a class="btn btn-primary" href="{{ route('atendimento') }}">
+                Acessar
+              </a>
+              @endif
 
             </div>
           </div>
@@ -79,13 +81,13 @@ $title = 'Intranet - Home';
               <h4>Intranet CRA-BA</h4>
               <p>Informações importantes do CRA-BA</p>
               @if(!Auth::check())
-            <a class="btn btn-primary" href="{{ route('login') }}">
-              Entrar
-            </a>
-            @else<a class="btn btn-primary" href="{{ route('painel') }}">
-              Acessar
-            </a>
-            @endif
+              <a class="btn btn-primary" href="{{ route('login') }}">
+                Entrar
+              </a>
+              @else<a class="btn btn-primary" href="{{ route('painel') }}">
+                Acessar
+              </a>
+              @endif
 
             </div>
           </div>

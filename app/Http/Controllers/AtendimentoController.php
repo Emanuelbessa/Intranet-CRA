@@ -20,9 +20,9 @@ class AtendimentoController extends Controller
         $carbon = Carbon::today();
         $atendimentostelefone = Atendimento::where(['Fk_Id_Atendente' => $user->id])->where('Fk_Tipo_Atendimento', '=', '2')->get();
         $atendimentofeitos = Atendimento::where(['Fk_Id_Atendente' => $user->id])->where('created_at', '>', $carbon)->get();
-        return view('Atendimento/atendimento',[
+        return view('Atendimento/atendimento', [
             'usuario_nome' => $user->first_name,
-            'usuario_sobrenome' =>$user->last_name,
+            'usuario_sobrenome' => $user->last_name,
             'atendimentosfeitos' => count($atendimentofeitos),
             'atendimentostelefone' => count($atendimentostelefone)
         ]);
@@ -33,9 +33,9 @@ class AtendimentoController extends Controller
         return view('Atendimento/atendimentoNovo');
     }
 
-    public function relatorio(){
-        
-        
+    public function relatorio()
+    {
+
         $motivos = DB::table('motivos')->get();
 
         return view('Atendimento/atendimentoRelatorio', ['motivos' => $motivos]);
@@ -48,9 +48,9 @@ class AtendimentoController extends Controller
         DB::beginTransaction();
 
         try {
-                $atendimento = null;
+            $atendimento = null;
             for ($i = 0; $i < intval($req->TamanhoObjeto); $i++) {
-                
+
                 $atendimento = new Atendimento();
                 $atendimento->Fk_Tipo_Registro = $req->TipoRegistro;
                 $atendimento->Fk_Tipo_PFPJ = $req->PFPJ;

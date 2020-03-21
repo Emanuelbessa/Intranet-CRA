@@ -15,7 +15,7 @@
       </div>
       <div class="info">
         @php
-            $usuario = Auth::user();
+        $usuario = Auth::user();
         @endphp
         <a href="#" class="d-block">{{$usuario->first_name}} {{$usuario->last_name}}</a>
       </div>

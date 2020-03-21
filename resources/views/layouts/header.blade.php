@@ -38,12 +38,12 @@
         @php
 
         $obj = [];
-            $user = Auth::user();
-            $iduser = $user->id;
-            $roles = DB::table('user_role')->where('user_id', $iduser)->get();
+        $user = Auth::user();
+        $iduser = $user->id;
+        $roles = DB::table('user_role')->where('user_id', $iduser)->get();
 
-            foreach ($roles as $role) {
-              array_push($obj, $role->role_id);
+        foreach ($roles as $role) {
+        array_push($obj, $role->role_id);
         }
         @endphp
         @if(in_array("1", $obj))
