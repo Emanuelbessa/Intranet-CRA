@@ -42,7 +42,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index3.html" class="nav-link">Home</a>
+          <a href="{{route('painel')}}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -62,147 +62,7 @@
       </form>
     </nav>
     <!-- /.navbar -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="painel" class="brand-link">
-        <img src="{{ asset('AdminLTE/dist/img/logo500x100.jpg') }}" alt="CRABA Logo" class="brand-image elevation-3"
-          style="opacity: .8">
-        <span class="brand-text font-weight-light"><strong>CRA-BA</strong></span>
-      </a>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Roteiros de Atendimento
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Roteiro PF</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Roteiro PJ</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Não Registrado</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-phone"></i>
-                <p>
-                  Telefones Uteis
-                </p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-calendar-alt"></i>
-                <p>
-                  Prazos Importantes
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-hand-holding-usd"></i>
-                <p>
-                  Valores das Taxas
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Level 1</p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-circle"></i>
-                <p>
-                  Level 1
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                  </a>
-                </li>
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      Level 2
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Level 1</p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
+    @includeif('layouts.sidebar')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -223,152 +83,154 @@
       </section>
       <!-- Main content -->
       <!-- Inicio do Form -->
-    <form action="{{action('AtendimentoController@relatorioNovo')}}" method="POST">
-      {{ csrf_field() }}
-      <section class="content">
-        <div class="container-fluid">
-          <!-- SELECT2 EXAMPLE -->
-          <div class="card card-gray">
-            <div class="card-header">
-              <h3 class="card-title">Selecione Todos os Filtros</h3>
+      <form action="{{action('AtendimentoController@relatorioNovo')}}" method="POST">
+        {{ csrf_field() }}
+        <section class="content">
+          <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-gray">
+              <div class="card-header">
+                <h3 class="card-title">Selecione Todos os Filtros</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                    class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                    class="fas fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="row">
-                <!-- /.col -->
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Filtros</label>
-                    <select name="filtros[]" id="filtros" class="select2" multiple="multiple" data-placeholder="Selecione os Filtros"
-                      style="width: 100%;">
-                      @foreach ($pfpj as $pfpj_value){
-                      <option value="{{$pfpj_value->Nome_Tipo_PFPJ}}">
-                        {{$pfpj_value->Nome_Tipo_PFPJ}}</option>
-                      }@endforeach
-                      @foreach ($tipo_atendimento as $tipo_atendimento_value)
-                      <option value="{{$tipo_atendimento_value->Nome_Tipo_Atendimento}}">
-                        {{$tipo_atendimento_value->Nome_Tipo_Atendimento}}</option>
-                      @endforeach
-                      @foreach ($tipo_registro as $tipo_registro_value)
-                      <option value="{{$tipo_registro_value->Nome_Tipo_Registro}}">
-                        {{$tipo_registro_value->Nome_Tipo_Registro}}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                  <!-- /.form-group -->
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                      class="fas fa-minus"></i></button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                      class="fas fa-times"></i></button>
                 </div>
-                <!-- /.col -->
               </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-              Selecione todos os filtros
-            </div>
-          </div>
-          <!-- /.card -->
-          <div class="card card-gray">
-            <div class="card-header">
-              <h3 class="card-title">Motivos do Atendimento</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                    class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                    class="fas fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label>Multiple</label>
-                    <select id="motivos" name="motivos[]" class="duallistbox" multiple="multiple">
-                      @foreach ($motivos as $motivo){
-                      <option value="{{$motivo->Id_Motivo}}">{{$motivo->Nome_Motivo}}</option>
-                      }
-                      @endforeach
-                    </select>
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-              Selecione todos os filtros
-            </div>
-          </div>
-          <!-- /.card -->
-
-          <div class="row">
-            <div class="col-md-6">
-
-              <div class="card card-gray">
-                <div class="card-header">
-                  <h3 class="card-title">Periodo</h3>
-                </div>
-                <div class="card-body">
-                  <!-- Date dd/mm/yyyy -->
-                  <div class="form-group">
-                    <label>Data Inicial e Data Final:</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                      </div>
-                      <input name="datainicial" type="text" class="form-control" data-inputmask-alias="datetime"
-                        data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Filtros PF/PJ</label>
+                      <select name="filtrosPFPJ[]" id="filtrosPFPJ" class="select2" multiple="multiple"
+                        data-placeholder="Selecione PF e/ou PJ" style="width: 100%;">
+                        @foreach ($pfpj as $pfpj_value){
+                        <option value="{{$pfpj_value->Nome_Tipo_PFPJ}}">
+                          {{$pfpj_value->Nome_Tipo_PFPJ}}</option>
+                        }@endforeach
+                      </select>
+                      <label>Filtros Atendimento</label>
+                      <select name="filtrosAtendimento[]" id="filtrosAtendimento" class="select2" multiple="multiple"
+                        data-placeholder="Selecione Modalidade de Atendimento" style="width: 100%;">
+                        @foreach ($tipo_atendimento as $tipo_atendimento_value)
+                        <option value="{{$tipo_atendimento_value->Nome_Tipo_Atendimento}}">
+                          {{$tipo_atendimento_value->Nome_Tipo_Atendimento}}</option>
+                        @endforeach
+                      </select>
+                      <label>Filtros Registro</label>
+                      <select name="filtrosRegistro[]" id="filtrosRegistro" class="select2" multiple="multiple"
+                        data-placeholder="Selecione Modalidade de Registro" style="width: 100%;">
+                        @foreach ($tipo_registro as $tipo_registro_value)
+                        <option value="{{$tipo_registro_value->Nome_Tipo_Registro}}">
+                          {{$tipo_registro_value->Nome_Tipo_Registro}}</option>
+                        @endforeach
+                      </select>
                     </div>
-                    <!-- /.input group -->
+                    <!-- /.form-group -->
                   </div>
-                  <!-- /.form group -->
-                  <!-- Date mm/dd/yyyy -->
-                  <div class="form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                      </div>
-                      <input name="datafinal" type="text" class="form-control" data-inputmask-alias="datetime"
-                        data-inputmask-inputformat="mm/dd/yyyy" data-mask>
-                    </div>
-                    <!-- /.input group -->
-                  </div>
-                  <!-- /.form group -->
-                  <div>
-                    <button class="btn btn-primary" type="submit">Ok</button>
-                  </div>
+                  <!-- /.col -->
                 </div>
-                <!-- /.card-body -->
+                <!-- /.row -->
               </div>
-              <!-- /.card -->
+              <!-- /.card-body -->
+              <div class="card-footer">
+                Selecione todos os filtros
+              </div>
             </div>
-            <!-- /.col (left) -->
-            <!-- /.col (right) -->
-          </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </section>
-    </form>
+            <!-- /.card -->
+            <div class="card card-gray">
+              <div class="card-header">
+                <h3 class="card-title">Motivos do Atendimento</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                      class="fas fa-minus"></i></button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                      class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Multiple</label>
+                      <select id="motivos" name="motivos[]" class="duallistbox" multiple="multiple">
+                        @foreach ($motivos as $motivo){
+                        <option value="{{$motivo->Id_Motivo}}">{{$motivo->Nome_Motivo}}</option>
+                        }
+                        @endforeach
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                Selecione todos os filtros
+              </div>
+            </div>
+            <!-- /.card -->
+
+            <div class="row">
+              <div class="col-md-6">
+
+                <div class="card card-gray">
+                  <div class="card-header">
+                    <h3 class="card-title">Periodo</h3>
+                  </div>
+                  <div class="card-body">
+                    <!-- Date dd/mm/yyyy -->
+                    <div class="form-group">
+                      <label>Data Inicial e Data Final:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input name="datainicial" type="text" class="form-control" data-inputmask-alias="datetime"
+                          data-inputmask-inputformat="dd-mm-yyyy" data-mask>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <!-- Date mm/dd/yyyy -->
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input name="datafinal" type="text" class="form-control" data-inputmask-alias="datetime"
+                          data-inputmask-inputformat="dd-mm-yyyy" data-mask>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <div>
+                      <button class="btn btn-primary" type="submit">Ok</button>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col (left) -->
+              <!-- /.col (right) -->
+            </div>
+            <!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </section>
+      </form>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.0
-      </div>
-      <strong>Copyright &copy; 2020 <a href="http://cra-ba.org.br">CRA-BA</a>.</strong> All rights
-      reserved.
-    </footer>
+    @includeif('layouts.footer')
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

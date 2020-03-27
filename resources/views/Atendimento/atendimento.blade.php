@@ -112,8 +112,6 @@ $title = 'Intranet - Atendimento';
   <script src="{{ asset ('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <!-- AdminLTE -->
   <script src="{{ asset ('AdminLTE/dist/js/adminlte.js') }}"></script>
-
-  <!-- OPTIONAL SCRIPTS -->
-  <script src="{{ asset ('AdminLTE/dist/js/demo.js') }}"></script>
 </body>
+
 </html>
