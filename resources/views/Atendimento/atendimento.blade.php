@@ -6,15 +6,12 @@ $title = 'Intranet - Atendimento';
 <html lang="pt-BR">
 @includeif('layouts.head')
 
-<body class="">
+<body class="hold-transition sidebar-mini">
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="painel" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="atendimento/novo" class="nav-link">Novo Atendimento</a>
+        <a href="{{ route('atendimentoNovo') }}" class="nav-link">Novo Atendimento</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contato</a>
@@ -43,16 +40,8 @@ $title = 'Intranet - Atendimento';
     </ul>
   </nav>
 
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Olá, {{$usuario_nome}} {{$usuario_sobrenome}}</h1>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
 
+  @includeif('layouts.sidebarAtendimento')
 
   <div class="row justify-content-center">
     <div class="col-lg-3 col-6">
@@ -60,7 +49,6 @@ $title = 'Intranet - Atendimento';
       <div class="small-box bg-info">
         <div class="inner">
           <h3>{{$atendimentosfeitos}}</h3>
-
           <p>Atendimentos Totais Feitos Hoje</p>
         </div>
         <div class="icon">
@@ -75,7 +63,6 @@ $title = 'Intranet - Atendimento';
       <div class="small-box bg-info">
         <div class="inner">
           <h3>{{$atendimentostelefone}}</h3>
-
           <p>Atendimentos Por Telefone Feitos Hoje</p>
         </div>
         <div class="icon">
@@ -84,7 +71,6 @@ $title = 'Intranet - Atendimento';
         <a href="#" class="small-box-footer">Mais Informações <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
-
   </div>
 
   <div class="row justify-content-center">
@@ -107,7 +93,6 @@ $title = 'Intranet - Atendimento';
       <div class="small-box bg-secondary">
         <div class="inner">
           <h3>XXX</h3>
-
           <p>Ver um atendimento</p>
         </div>
         <div class="icon">
@@ -119,9 +104,6 @@ $title = 'Intranet - Atendimento';
 
   </div>
 
-
-
-
   @includeif('layouts.footer')
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
@@ -132,9 +114,6 @@ $title = 'Intranet - Atendimento';
   <script src="{{ asset ('AdminLTE/dist/js/adminlte.js') }}"></script>
 
   <!-- OPTIONAL SCRIPTS -->
-  <script src="{{ asset ('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset ('AdminLTE/dist/js/demo.js') }}"></script>
-  <script src="{{ asset ('AdminLTE/dist/js/pages/dashboard3.js') }}"></script>
 </body>
-
 </html>

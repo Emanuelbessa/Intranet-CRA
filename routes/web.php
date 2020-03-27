@@ -48,7 +48,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/atendimento', [
         'uses' => 'AtendimentoController@atendimento',
         'middleware' => 'roles',
-        'roles' => ['Administrador', 'Atendente'],
+        'roles' => ['Administrador', 'Atendente', 'Gestor'],
         'as' => 'atendimento'
     ]);
 

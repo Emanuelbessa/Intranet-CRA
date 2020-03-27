@@ -5,11 +5,6 @@ $title = 'Intranet - Admin';
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-
-<?php 
-$title = 'Intranet - Home';
-?>
-
 @includeif('layouts.head')
 
 <body class="hold-transition sidebar-mini">
@@ -21,11 +16,9 @@ $title = 'Intranet - Home';
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Quadro de Usuários Cadastrados</h3>
-
             <div class="card-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" name="table_search" class="form-control float-right" placeholder="Buscar">
-
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                 </div>
@@ -81,24 +74,15 @@ $title = 'Intranet - Home';
         <!-- /.card -->
       </div>
     </div>
-
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
   @includeif('layouts.footer')
-  </div>
-  <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
-
   <!-- jQuery -->
   <script src="{{ asset ('AdminLTE/plugins/jquery/jquery.min.js') }} "></script>
   <!-- Bootstrap -->
@@ -107,9 +91,7 @@ $title = 'Intranet - Home';
   <script src="{{ asset ('AdminLTE/dist/js/adminlte.js') }}"></script>
 
   <!-- OPTIONAL SCRIPTS -->
-  <script src="{{ asset ('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset ('AdminLTE/dist/js/demo.js') }}"></script>
-  <script src="{{ asset ('AdminLTE/dist/js/pages/dashboard3.js') }}"></script>
 </body>
 
 </html>

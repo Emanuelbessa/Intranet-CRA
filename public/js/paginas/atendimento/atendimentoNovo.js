@@ -282,11 +282,6 @@ $("#enviar").click(function() {
         objetosubmotivos.push($(this).val());
     });
 
-    /*if ($('input[type="text"][name="outrosmotivos"]').val() == ""
-    ) {
-        // Escrever Erro por não ter motivo
-    }*/
-
     var dados = {
         TamanhoObjeto: objetomotivos.length,
         atendimentomotivos: objetomotivos,

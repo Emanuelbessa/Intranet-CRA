@@ -9,11 +9,9 @@
     ?>
 
 <head>
-
   @includeif('layouts.head')
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 
 <body class="hold-transition sidebar-mini" onload="esconder()">
@@ -37,7 +35,6 @@
           </div>
         </div><!-- /.container-fluid -->
       </section>
-
       <!-- Main content -->
       <section class="content">
         @csrf
@@ -68,7 +65,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6">
             <div class="card card-warning">
               <div class="card-header">
@@ -94,7 +90,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6">
             <div class="card card-primary">
               <div class="card-header">
@@ -170,9 +165,7 @@
           <!-- form start -->
           <div class="card-body">
             <div class="form-group">
-
               @includeif('Atendimento.MotivosAtendimento')
-
             </div>
             <div class="form-group row">
               <label for="inputoutros" class="col-sm-2 col-form-label">Outros</label>
@@ -229,12 +222,14 @@
             </div>
           </div>
         </div>
-
         <div class="card-footer">
-          <button onclick="return confirm('Gostaria de Finalizar o atendimento?')" type="submit" class="btn btn-primary" id="enviar">Finalizar Atendimento</button>
+          <button onclick="return confirm('Gostaria de Finalizar o atendimento?')" type="submit" class="btn btn-primary"
+            id="enviar">Finalizar Atendimento</button>
+          <a onclick="return confirm('Tem certeza que deseja cancelar o atendimento?')" type="submit"
+            class="btn btn-danger offset-md-1 offset-lg-1 offset-sm-1" href="{{ route('atendimento') }}">Cancelar
+            Atendimento</a>
         </div>
         <!-- /.card-footer -->
-
     </div>
     <!-- /.card -->
     </section>
@@ -243,12 +238,6 @@
   <!-- /.content-wrapper -->
   @includeif('layouts.footer')
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-  </div>
   <!-- ./wrapper -->
   <!-- jQuery -->
   <script src="{{ asset ('AdminLTE/plugins/jquery/jquery.min.js') }} "></script>

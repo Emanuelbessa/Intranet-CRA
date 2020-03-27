@@ -17,6 +17,9 @@
       <a href="#" class="nav-link">Relatório - Administrativo</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
+      <a href="{{ route('relatorio') }}" class="nav-link">Relatório - Atendimento</a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Contato</a>
     </li>
   </ul>
@@ -36,7 +39,6 @@
         </a>
         <div class="dropdown-divider"></div>
         @php
-
         $obj = [];
         $user = Auth::user();
         $iduser = $user->id;
