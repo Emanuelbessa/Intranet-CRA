@@ -7,7 +7,9 @@
   <title>Intranet - Cra-BA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <!-- Datatables Buttons -->
+  <link rel="stylesheet"
+    href="{{ asset('AdminLTE/plugins/datatable-export/Buttons-1.6.1/css/buttons.dataTables.min.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
@@ -20,6 +22,9 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+@php
+$usuario = Auth::user();
+@endphp
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -58,7 +63,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="TabelaResultado" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>Nome</th>
@@ -82,8 +87,8 @@
                       <td>{{$atendimentos->created_at}}</td>
                     </tr>
                     @endforeach
-                    <tfoot>
-                      <tr>
+                  <tfoot>
+                    <tr>
                       <th>Nome</th>
                       <th>Motivo</th>
                       <th>PF/PJ</th>
@@ -91,8 +96,8 @@
                       <th>Registrado?</th>
                       <th>Atendente</th>
                       <th>Data</th>
-                      </tr>
-                      </tfoot>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -127,23 +132,82 @@
   <script src="{{ asset('AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script>
+  <!-- Export Scripts -->
+  <script src="{{ asset('AdminLTE/plugins/datatable-export/Buttons-1.6.1/js/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ asset('AdminLTE/plugins/datatable-export/JSZip-2.5.0/jszip.min.js') }}"></script>
+  <script src="{{ asset('AdminLTE/plugins/datatable-export/pdfmake-0.1.36/pdfmake.min.js') }}"></script>
+  <script src="{{ asset('AdminLTE/plugins/datatable-export/pdfmake-0.1.36/vfs_fonts.js') }}"></script>
+  <script src="{{ asset('AdminLTE/plugins/datatable-export/Buttons-1.6.1/js/buttons.html5.min.js') }}"></script>
+  <script src="{{ asset('AdminLTE/plugins/datatable-export/Buttons-1.6.1/js/buttons.print.min.js') }}"></script>
   <!-- page script -->
   <script>
-    $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+    var data = new Date();
+var teste = {!! json_encode($usuario -> first_name)!!};
+$(function () {
+    $("#TabelaResultado").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdf',
+                text: 'Salvar em PDF',
+                title: 'Relatorio de Atendimento ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+                filename: 'Relatorio Atendimento ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+                messageTop: 'Relatório gerado por ' + {!! json_encode($usuario-> first_name)!!} + ' ' + {!! json_encode($usuario -> last_name)!!} + ' na data ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear() + ' ás ' + data.getHours() + ':' + data.getMinutes(),
+    exportOptions: {
+    modifier: {
+        page: 'current'
+    }
+}
+        },
+    {
+        extend: 'excel',
+        text: 'Salvar em Excel',
+        title: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        filename: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        exportOptions: {
+            modifier: {
+                page: 'current'
+            }
+        }
+    },
+    {
+        extend: 'print',
+        text: 'Imprimir',
+        messageTop: 'Relatório gerado por ' + {!! json_encode($usuario-> first_name)!!} + ' ' + {!! json_encode($usuario -> last_name)!!} + ' na data ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear() + ' ás ' + data.getHours() + ':' + data.getMinutes(),
+        title: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        filename: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        exportOptions: {
+            modifier: {
+                page: 'current'
+            }
+        }
+    },
+    {
+        extend: 'copy',
+        text: 'Copiar Tabela',
+        title: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        filename: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        exportOptions: {
+            modifier: {
+                page: 'current'
+            }
+        }
+    },
+    {
+        extend: 'csv',
+        text: 'Salvar em CSV',
+        title: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        filename: 'Relatorio Atendimento' + ' ' + data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear(),
+        exportOptions: {
+            modifier: {
+                page: 'current'
+            }
+        }
+    },
+        ]
+        
     });
   });
   </script>

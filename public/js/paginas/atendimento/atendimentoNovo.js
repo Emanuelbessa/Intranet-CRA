@@ -1,4 +1,4 @@
-var enviarAjax = function(dados, metodo, url, callback){
+var enviarAjax = function (dados, metodo, url, callback) {
     $.ajax({
         url: url,
         method: metodo,
@@ -7,18 +7,18 @@ var enviarAjax = function(dados, metodo, url, callback){
             'X-CSRF-TOKEN': $('input[name="_token"]').val()
         }
 
-    }).fail(function(jqXHR, exception){
+    }).fail(function (jqXHR, exception) {
         var msg = {
-            'climsg' : 'Erro ao efetuar a operação!',
-            'systemMsg' : null
+            'climsg': 'Erro ao efetuar a operação!',
+            'systemMsg': null
         }
 
-        $.each(jqXHR.responseJSON, function(key,value) {
+        $.each(jqXHR.responseJSON, function (key, value) {
             msg.systemMsg += value;
         });
 
         toastr.error(msg.climsg);
-    }).done(function(retorno){
+    }).done(function (retorno) {
         callback(retorno);
     });
 };
@@ -171,7 +171,7 @@ function EsconderParcial() {
     }
 }
 
-$('input[type="checkbox"][name="checkmotivo22"]').click(function() {
+$('input[type="checkbox"][name="checkmotivo22"]').click(function () {
     if (
         $('input[type="checkbox"][name="checkmotivo22"]').is(":checked") &&
         $("#PF").is(":checked")
@@ -192,7 +192,7 @@ $('input[type="checkbox"][name="checkmotivo22"]').click(function() {
     }
 });
 
-$('input[type="checkbox"][name="checkmotivo22"]').click(function() {
+$('input[type="checkbox"][name="checkmotivo22"]').click(function () {
     if (
         $('input[type="checkbox"][name="checkmotivo22"]').is(":checked") &&
         $("#PJ").is(":checked")
@@ -207,7 +207,7 @@ $('input[type="checkbox"][name="checkmotivo22"]').click(function() {
     }
 });
 
-$("#representante").click(function() {
+$("#representante").click(function () {
     if ($("#representante").is(":checked")) {
         $("#nomerepresentante").show();
         $("#cpfrepresentante").show();
@@ -217,7 +217,7 @@ $("#representante").click(function() {
     }
 });
 
-$('input[type="radio"][name="TipoRegistro"]').click(function() {
+$('input[type="radio"][name="TipoRegistro"]').click(function () {
     if ($("#registrado").is(":checked") && $("#PF").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < RegistradoPF.length; i++) {
@@ -244,7 +244,7 @@ $('input[type="radio"][name="TipoRegistro"]').click(function() {
         aux = 4;
     }
 });
-$('input[type="radio"][name="PFPJ"]').click(function() {
+$('input[type="radio"][name="PFPJ"]').click(function () {
     if ($("#registrado").is(":checked") && $("#PF").is(":checked")) {
         EsconderParcial();
         for (i = 0; i < RegistradoPF.length; i++) {
@@ -272,13 +272,13 @@ $('input[type="radio"][name="PFPJ"]').click(function() {
     }
 });
 
-$("#enviar").click(function() {
+$("#enviar").click(function () {
     var objetomotivos = [];
     var objetosubmotivos = [];
-    $.each($("#checkmotivo:checked"), function() {
+    $.each($("#checkmotivo:checked"), function () {
         objetomotivos.push($(this).val());
     });
-    $.each($("#checksubmotivo:checked"), function() {
+    $.each($("#checksubmotivo:checked"), function () {
         objetosubmotivos.push($(this).val());
     });
 
@@ -312,14 +312,15 @@ $("#enviar").click(function() {
         ).val()
     };
 
-    enviarAjax(dados, "POST", "/atendimento/criar-atendimento", function(resp) {
+    enviarAjax(dados, "POST", "/atendimento/criar-atendimento", function (resp) {
         if (resp.retorno) {
             toastr.success("Atendimento Feito Com Sucesso");
-            setTimeout(()=>{    
-            window.location.replace(window.location.origin + "/atendimento");
+            setTimeout(() => {
+                window.location.replace(window.location.origin + "/atendimento");
             }, 5000)
-        }else{
+        } else {
             toastr.error("Algo de Errado Ocorreu\nRevise se os campos estão marcados corretamente");
         }
     });
 });
+
