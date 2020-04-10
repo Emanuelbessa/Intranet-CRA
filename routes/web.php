@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/chat', 'MessageController@index')->name('chat');
+Route::get('/message/{id}', 'MessageController@getMessage')->name('message');
+Route::post('message', 'MessageController@sendMessage');
+
+
 Route::post('/atendimento/criar-atendimento', 'AtendimentoController@criarAtendimento');
 Route::get('/painel', 'PainelController@Painel')->name('painel');
 Route::get('/home', 'HomeController@index')->name('home');
