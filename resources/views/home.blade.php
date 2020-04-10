@@ -72,9 +72,9 @@ $title = 'Intranet - Home';
           <div class="col-md-6 col-lg-4">
             <div class="feature-block">
               <img src="imagens/asteroid.svg" alt="img" class="img-fluid">
-              <h4>Próxima Ideia</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-              <a href="#">Acesse</a>
+              <h4>Chat</h4>
+              <p>Chat Online para os colaboladores</p>
+            <a href="{{route('chat')}}">Acesse</a>
             </div>
           </div>
         </div>
